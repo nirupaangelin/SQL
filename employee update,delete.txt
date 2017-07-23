@@ -1,0 +1,84 @@
+Welcome to the MariaDB monitor.  Commands end with ; or \g.                                                                                                   
+Your MariaDB connection id is 3                                                                                                                               
+Server version: 10.0.23-MariaDB MariaDB Server                                                                                                                
+                                                                                                                                                              
+Copyright (c) 2000, 2015, Oracle, MariaDB Corporation Ab and others.                                                                                          
+                                                                                                                                                              
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.                                                                                
+                                                                                                                                                              
+MariaDB [(none)]> create database employee;                                                                                                                   
+Query OK, 1 row affected (0.00 sec)                                                                                                                           
+                                                                                                                                                              
+MariaDB [(none)]> use employee;                                                                                                                               
+Database changed                                                                                                                                              
+MariaDB [employee]> create table employee(id int,name varchar(10),age int,address varchar(20),salary int);                                                    
+Query OK, 0 rows affected (0.01 sec)                                                                                                                          
+                                                                                                                                                              
+MariaDB [employee]> insert into employee('ramesh',32,'ahmedabad',2000);                                                                                       
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ''
+ramesh',32,'ahmedabad',2000)' at line 1                                                                                                                       
+MariaDB [employee]> insert into employee values('ramesh',32,'ahmedabad',2000);                                                                                
+ERROR 1136 (21S01): Column count doesn't match value count at row 1                                                                                           
+MariaDB [employee]> insert into employee values(1,'ramesh',32,'ahmedabad',2000);                                                                              
+Query OK, 1 row affected (0.01 sec)                                                                                                                           
+                                                                                                                                                              
+MariaDB [employee]> insert into employee values(0,'khilan',25,'delhi',1500);                                                                                  
+Query OK, 1 row affected (0.00 sec)                                                                                                                           
+                                                                                                                                                              
+MariaDB [employee]> insert into employee values(3,'kaushik',23,'kota',2000);                                                                                  
+Query OK, 1 row affected (0.00 sec)
+
+                                                                                                                                                             
+MariaDB [employee]> insert into employee values(4,'chaitali',25,'mumbai',6500);                                                                               
+Query OK, 1 row affected (0.00 sec)                                                                                                                           
+                                                                                                                                                                
+                                                                                                                                                                                                                                                                                
+                                                                                                                                                              
+MariaDB [employee]> insert into employee values(6,'komal',22,'mp',6500);                                                                                      
+Query OK, 1 row affected (0.00 sec)                                                                                                                           
+                                                                                                                                                              
+MariaDB [employee]> insert into employee values(7,'muffy',25,'indore',10000);                                                                                 
+Query OK, 1 row affected (0.00 sec)                                                                                                                           
+                                                                                                                                                              
+MariaDB [employee]> select*from employee;                                                                                                                     
++------+----------+------+-----------+--------+                                                                                                               
+| id   | name     | age  | address   | salary |                                                                                                               
++------+----------+------+-----------+--------+                                                                                                               
+|    1 | ramesh   |   32 | ahmedabad |   2000 |                                                                                                               
+|    0 | khilan   |   25 | delhi     |   1500 |                                                                                                               
+|    3 | kaushik  |   23 | kota      |   2000 |                                                                                                               
+|    4 | chaitali |   25 | mumbai    |   6500 |                                                                                                               
+|    5 | hardik   |   27 | bhopal    |   6500 |                                                                                                               
+|    6 | komal    |   22 | mp        |   6500 |                                                                                                               
+|    7 | muffy    |   25 | indore    |  10000 |                                                                                                               
++------+----------+------+-----------+--------+                                                                                                               
+7 rows in set (0.00 sec)                                                                                                                                      
+                                                                                                                                                              
+MariaDB [employee]> update employee adress='maharashtra'where name='komal';                                                                                   
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '=
+'maharashtra'where name='komal'' at line 1                                                                                                                    
+MariaDB [employee]> update employee adress = 'maharashtra' where name='komal';                                                                                
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '=
+ 'maharashtra' where name='komal'' at line 1                                                                                                                  
+MariaDB [employee]> update employee set adress = 'maharashtra' where name='komal';                                                                            
+ERROR 1054 (42S22): Unknown column 'adress' in 'field list'                                                                                                   
+MariaDB [employee]> update employee set address = 'maharashtra' where name='komal';   
+
+
+Query OK, 1 row affected (0.00 sec)                                                                                                                           
+Rows matched: 1  Changed: 1  Warnings: 0                                                                                                                      
+                                                                                                                                                              
+MariaDB [employee]> select*from employee;                                                                                                                     
++------+----------+------+-------------+--------+                                                                                                             
+| id   | name     | age  | address     | salary |                                                                                                             
++------+----------+------+-------------+--------+                                                                                                             
+|    1 | ramesh   |   32 | ahmedabad   |   2000 |                                                                                                             
+|    0 | khilan   |   25 | delhi       |   1500 |                                                                                                             
+|    3 | kaushik  |   23 | kota        |   2000 |                                                                                                             
+|    4 | chaitali |   25 | mumbai      |   6500 |                                                                                                             
+|    5 | hardik   |   27 | bhopal      |   6500 |                                                                                                             
+|    6 | komal    |   22 | maharashtra |   6500 |                                                                                                             
+|    7 | muffy    |   25 | indore      |  10000 |                                                                                                             
++------+----------+------+-------------+--------+                                                                                                             
+7 rows in set (0.00 sec)                                                                                                                                      
+                                                                                                       

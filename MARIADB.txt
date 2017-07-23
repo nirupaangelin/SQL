@@ -1,0 +1,172 @@
+sh-4.3$ /usr/bin/mysql -uroot -proot                                                                                                                           
+Welcome to the MariaDB monitor.  Commands end with ; or \g.                                                                                                    
+Your MariaDB connection id is 4                                                                                                                                
+Server version: 10.0.23-MariaDB MariaDB Server                                                                                                                 
+                                                                                                                                                               
+Copyright (c) 2000, 2015, Oracle, MariaDB Corporation Ab and others.                                                                                           
+                                                                                                                                                               
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.                                                                                 
+                                                                                                                                                               
+MariaDB [(none)]> CREATE DATABASE STUDENT;                                                                                                                     
+ERROR 1007 (HY000): Can't create database 'STUDENT'; database exists                                                                                           
+MariaDB [(none)]> USE STUDENT;                                                                                                                                 
+Reading table information for completion of table and column names                                                                                             
+You can turn off this feature to get a quicker startup with -A                                                                                                 
+                                                                                                                                                               
+Database changed                                                                                                                                               
+MariaDB [STUDENT]> SELECT*FROM STUDENT;                                                                                                                        
++--------+------+------+                                                                                                                                       
+| ROLLNO | NAME | DEPT |                                                                                                                                       
++--------+------+------+                                                                                                                                       
+|   1234 | ADA  | CSE  |                                                                                                                                       
+|   1235 | BEE  | ECE  |                                                                                                                                       
+|   1236 | CAT  | SWE  |                                                                                                                                       
++--------+------+------+                                                                                                                                       
+3 rows in set (0.00 sec)                                                                                                                                       
+                                      
+MariaDB [STUDENT]> SELECT*FROM EMPLOYEE;                                                                                                                       
+ERROR 1146 (42S02): Table 'STUDENT.EMPLOYEE' doesn't exist                                                                                                     
+MariaDB [STUDENT]> USE EMPLOYEE;                                                                                                                               
+Reading table information for completion of table and column names                                                                                             
+You can turn off this feature to get a quicker startup with -A                                                                                                 
+                                                                                                                                                               
+Database changed                                                                                                                                               
+MariaDB [EMPLOYEE]> SELECT*FROM EMPLOYEE;                                                                                                                      
++--------+------+--------+                                                                                                                                     
+| EMP_NO | NAME | DEPT   |                                                                                                                                     
++--------+------+--------+                                                                                                                                     
+|    234 | DAN  | DESIGN |                                                                                                                                     
+|    235 | ED   | PROD   |                                                                                                                                     
+|    236 | FRED | PROD   |                                                                                                                                     
++--------+------+--------+                                                                                                                                     
+3 rows in set (0.00 sec)                                                                                                                                       
+                                                                                                                                                               
+MariaDB [EMPLOYEE]> USE PRODUCTION;                                                                                                                            
+Reading table information for completion of table and column names                                                                                             
+You can turn off this feature to get a quicker startup with -A                                                                                                 
+
+Database changed                                                                                                                                               
+MariaDB [EMPLOYEE]> SELECT*FROM EMPLOYEE;                                                                                                                      
++--------+------+--------+                                                                                                                                     
+| EMP_NO | NAME | DEPT   |                                                                                                                                     
++--------+------+--------+                                                                                                                                     
+|    234 | DAN  | DESIGN |                                                                                                                                     
+|    235 | ED   | PROD   |                                                                                                                                     
+|    236 | FRED | PROD   |                                                                                                                                     
++--------+------+--------+                                                                                                                                     
+3 rows in set (0.00 sec)                                                                                                                                       
+                                                                                                                                                               
+MariaDB [EMPLOYEE]> USE PRODUCTION;                                                                                                                            
+Reading table information for completion of table and column names                                                                                             
+You can turn off this feature to get a quicker startup with -A                                                                                                 
+                                                                                                                                                               
+Database changed                                                                                                                                               
+MariaDB [PRODUCTION]> DESCRIBE PRODUCTION;                                                                                                                     
++----------+-------------+------+-----+---------+-------+                                                                                                      
+| Field    | Type        | Null | Key | Default | Extra |                                                                                                      
++----------+-------------+------+-----+---------+-------+                                                                                                      
+| ITEM     | varchar(20) | YES  |     | NULL    |       |                                                                                                      
+| QUANTITY | int(11)     | YES  |     | NULL    |       |                                                                                                      
+| DATE     | varchar(10) | YES  |     | NULL    |       |    
+                                                                                                  
++----------+-------------+------+-----+---------+-------+ 
+
+
+
+3 rows in set (0.00 sec)                                                                                                                                       
+                                                                                                                                                               
+MariaDB [PRODUCTION]> INSERT INTO PRODUCTION VALUES('SHAFT',3000,'8/7/17');                                                                                    
+Query OK, 1 row affected (0.00 sec)                                                                                                                            
+                                                                                                                                                               
+MariaDB [PRODUCTION]> SELECT*FROM PRODUCTION;                                                                                                                  
++--------+----------+--------+                                                                                                                                 
+| ITEM   | QUANTITY | DATE   |                                                                                                                                 
++--------+----------+--------+                                                                                                                                 
+| PISTON |     3000 | 3/7/17 |                                                                                                                                 
+| SHAFT  |     3000 | 8/7/17 |                                                                                                                                 
++--------+----------+--------+                                                                                                                                 
+2 rows in set (0.00 sec)                                                                                                                                       
+                                                                                                                                                               
+MariaDB [PRODUCTION]> SHOW PRODUCTION;                                                                                                                         
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'PR
+ODUCTION' at line 1                                                                                                                                            
+MariaDB [PRODUCTION]> SHOW TABLES;                                                                                                                             
++----------------------+                                                                                                                                       
+| Tables_in_PRODUCTION |                                                                                                                                       
++----------------------+                                                                                                                                       
+| PRODUCTION           |                                                                                                                                       
++----------------------+                                                                                                                                       
+1 row in set (0.00 sec)                                                                                                                                        
+                                                                                                                                                               
+MariaDB [PRODUCTION]> SHOW DATABASES;  
+MariaDB [PRODUCTION]> SHOW DATABASES;                                                                                                                          
++--------------------+                                                                                                                                         
+| Database           |                                                                                                                                         
++--------------------+                                                                                                                                         
+| CODINGGROUND       |                                                                                                                                         
+| EMPLOYEE           |                                                                                                                                         
+| PRODUCTION         |                                                                                                                                         
+| STUDENT            |                                                                                                                                         
+| information_schema |                                                                                                                                         
+| mysql              |                                                                                                                                         
+| performance_schema |                                                                                                                                         
+| test               |                                                                                                                                         
++--------------------+                                                                                                                                         
+8 rows in set (0.00 sec)                                                                                                                                       
+                                                                                                                                                               
+MariaDB [PRODUCTION]> USE STUDENT;                                                                                                                             
+Reading table information for completion of table and column names                                                                                             
+You can turn off this feature to get a quicker startup with -A                                                                                                 
+                                                                                                                                                               
+Database changed                                                                                                                                               
+
+
+
+MariaDB [STUDENT]> CREATE TABLE CLASSLEADER(NAME VARCHAR(10),CLASS VARCHAR(2));                                                                                
+Query OK, 0 rows affected (0.00 sec)                                                                                                                           
+                                                                                                                                                               
+MariaDB [STUDENT]> INSERT INTO CLASSLEADER VALUES('LINO','1A');                                                                                                
+Query OK, 1 row affected (0.00 sec)                                                                                                                            
+                                                                                                                                                               
+MariaDB [STUDENT]> INSERT INTO CLASSLEADER('MINO','2B');                                                                                                       
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ''M
+INO','2B')' at line 1                                                                                                                                          
+MariaDB [STUDENT]> INSERT INTO CLASSLEADER VALUES ('MINO','2B');                                                                                               
+Query OK, 1 row affected (0.00 sec)                                                                                                                            
+                                                                                                                                                               
+MariaDB [STUDENT]> SELECT*FROM CLASSLEADER;                                                                                                                    
++------+-------+                                                                                                                                               
+| NAME | CLASS |                                                                                                                                               
++------+-------+                                                                                                                                               
+| LINO | 1A    |                                                                                                                                               
+| MINO | 2B    |                                                                                                                                               
++------+-------+                                                                                                                                               
+2 rows in set (0.00 sec)                                                                                                                                       
+                                                                                                                                                               
+MariaDB [STUDENT]> DROP TABLE CLASSLEADER;                                                                                                                     
+Query OK, 0 rows affected (0.00 sec)                                                                                                                           
+                                                                                                                                                               
+MariaDB [STUDENT]> USE PRODUCTION;                                                                                                                             
+Reading table information for completion of table and column names                                                                                             
+You can turn off this feature to get a quicker startup with -A                                                                                                 
+                                                           
+                                                                                                                                                               
+Database changed                                                                                                                                               
+MariaDB [PRODUCTION]> ALTER TABLE PRODUCTION ADD DEPT_INCHARGE;                                                                                                
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' 
+at line 1                                                                                                                                                      
+MariaDB [PRODUCTION]> ALTER TABLE PRODUCTION ADD DEPT_INCHARGE VARCHAR(20);                                                                                    
+Query OK, 0 rows affected (0.05 sec)                                                                                                                           
+Records: 0  Duplicates: 0  Warnings: 0                                                                                                                         
+                                                                                                                                                               
+MariaDB [PRODUCTION]> SELECT*FROM PRODUCTION;                                                                                                                  
++--------+----------+--------+---------------+                                                                                                                 
+| ITEM   | QUANTITY | DATE   | DEPT_INCHARGE |                                                                                                                 
++--------+----------+--------+---------------+                                                                                                                 
+| PISTON |     3000 | 3/7/17 | NULL          |                                                                                                                 
+| SHAFT  |     3000 | 8/7/17 | NULL          |                                                                                                                 
++--------+----------+--------+---------------+                                                                                                                 
+2 rows in set (0.00 sec)          
+
+
+                                                                                                     

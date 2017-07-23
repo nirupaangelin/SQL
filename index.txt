@@ -1,0 +1,20 @@
+MariaDB [employee]> rename table employee to guvi;                                                                                                            
+Query OK, 0 rows affected (0.00 sec)                                                                                                                          
+                                                                                                                                                              
+MariaDB [employee]> select*from guvi;                                                                                                                         
++----+--------+------+                                                                                                                                        
+| id | name   | age  |                                                                                                                                        
++----+--------+------+                                                                                                                                        
+|  1 | ada    |   32 |                                                                                                                                        
+|  2 | python |   23 |                                                                                                                                        
+|  3 | java   |   25 |                                                                                                                                        
+|  4 | oracle |   26 |                                                                                                                                        
++----+--------+------+                                                                                                                                        
+4 rows in set (0.00 sec)                                                                                                                                      
+                                                                                                                                                              
+MariaDB [employee]> create index idx_name on guvi(name);                                                                                                      
+ERROR 1061 (42000): Duplicate key name 'idx_name'                                                                                                             
+MariaDB [employee]> create index in_name on guvi(name);                                                                                                       
+Query OK, 0 rows affected, 1 warning (0.01 sec)                                                                                                               
+Records: 0  Duplicates: 0  Warnings: 1                                                                                                                        
+                                         
